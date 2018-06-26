@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+      <PayMaya_Checkout>
+          <active>true</active>
+          <codePool>community</codePool>
+          <depends>
+              <Mage_Core/>
+          </depends>
+      </PayMaya_Checkout>
+  </modules>
+</config>

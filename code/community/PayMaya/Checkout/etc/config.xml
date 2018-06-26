@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+    <modules>
+        <PayMaya_Checkout>
+            <version>1.0.0</version>
+        </PayMaya_Checkout>
+    </modules>
+    <global>
+        <blocks>
+            <paymaya_checkout>
+                <class>PayMaya_Checkout_Block</class>
+            </paymaya_checkout>
+        </blocks>
+
+        <helpers>
+            <paymaya_checkout>
+                <class>PayMaya_Checkout_Helper</class>
+            </paymaya_checkout>
+        </helpers>
+
+        <models>
+            <paymaya_checkout>
+                <class>PayMaya_Checkout_Model</class>
+            </paymaya_checkout>
+        </models>
+
+        <resources>
+            <paymaya_checkout_setup>
+                <setup>
+                    <module>PayMaya_Checkout</module>
+                    <class>Mage_Sales_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </paymaya_checkout_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <PayMaya_Checkout before="Mage_Adminhtml">PayMaya_Checkout_Adminhtml</PayMaya_Checkout>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+        <translate>
+            <modules>
+                <PayMaya_Checkout>
+                    <files>
+                        <default>PayMaya_Checkout.csv</default>
+                    </files>
+                </PayMaya_Checkout>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <payment module="PayMaya_Checkout">
+                    <file>paymaya/checkout.xml</file>
+                </payment>
+            </updates>
+        </layout>
+        <routers>
+            <paymaya>
+                <use>standard</use>
+                <args>
+                    <module>PayMaya_Checkout</module>
+                    <frontName>paymaya</frontName>
+                </args>
+            </paymaya>
+        </routers>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <PayMaya_Checkout>
+                    <files>
+                        <default>PayMaya_Checkout.csv</default>
+                    </files>
+                </PayMaya_Checkout>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <paymaya_checkout>
+                    <file>paymaya/checkout.xml</file>
+                </paymaya_checkout>
+            </updates>
+        </layout>
+        <events>
+            <admin_system_config_changed_section_payment>
+                <observers>
+                    <paymaya_checkout_update_webhook>
+                        <type>singleton</type>
+                        <class>paymaya_checkout/observer</class>
+                        <method>updateWebhook</method>
+                    </paymaya_checkout_update_webhook>
+                </observers>
+            </admin_system_config_changed_section_payment>
+        </events>
+    </adminhtml>
+    <default>
+        <payment>
+            <paymaya_checkout>
+                <active>0</active>
+                <model>paymaya_checkout/payment</model>
+                <title>Credit card</title>
+                <instructions>Pay securely using your VISA and MasterCard credit, debit, or prepaid card.</instructions>
+                <allowspecific>0</allowspecific>
+                <failure_page>home</failure_page>
+            </paymaya_checkout>
+        </payment>
+    </default>
+</config>

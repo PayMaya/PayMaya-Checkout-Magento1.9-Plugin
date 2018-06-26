@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <menu>
+        <paymaya_checkout translate="title">
+            <title>PayMaya</title>
+            <sort_order>90</sort_order>
+            <children>
+                <log translate="title">
+                    <title>Payment Log</title>
+                    <action>adminhtml/paymaya_checkout/index</action>
+                    <sort_order>0</sort_order>
+                </log>
+                <config>
+                    <title>Configurable</title>
+                    <action>adminhtml/system_config/edit/section/payment</action>
+                    <sort_order>10</sort_order>
+                </config>
+            </children>
+        </paymaya_checkout>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <paymaya_checkout>
+                        <title>PayMaya</title>
+                        <sort_order>90</sort_order>
+                        <children>
+                            <log translate="title">
+                                <title>Payment Log</title>
+                                <sort_order>10</sort_order>
+                            </log>
+                        </children>
+                    </paymaya_checkout>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

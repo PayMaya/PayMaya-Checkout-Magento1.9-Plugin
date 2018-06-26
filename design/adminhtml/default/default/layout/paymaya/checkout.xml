@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout version="1.0">
+    <adminhtml_paymaya_checkout_index>
+        <reference name="content">
+            <block type="paymaya_checkout/adminhtml_index" name="paymaya_checkout.index" template="paymaya/checkout.phtml"/>
+        </reference>
+    </adminhtml_paymaya_checkout_index>
+</layout>

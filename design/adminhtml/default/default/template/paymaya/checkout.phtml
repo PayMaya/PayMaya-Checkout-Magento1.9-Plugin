@@ -1,0 +1,18 @@
+<?php /* @var $this PayMaya_Checkout_Block_Adminhtml_Index */ ?>
+<div class="content-header">
+    <table cellspacing="0">
+        <tbody>
+        <tr>
+            <td style="width:50%;"><h3 class="icon-head head-products"><?= $this->__('Payment Log') ?></h3></td>
+            <td class="a-right">
+                <button title="<?= $this->__('Delete Log') ?>" type="button" class="scalable"
+                        onclick="setLocation('<?php echo $this->getUrl('adminhtml/paymaya_checkout/delete') ?>')"
+                        style=""><span><span><span><?= $this->__('Delete Log') ?></span></span></span></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="log_wrap" style="border: 1px solid #ccc; padding: 10px;">
+    <?= nl2br($this->getPaymentLog()) ?>
+</div>
